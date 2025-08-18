@@ -32,7 +32,7 @@ def main(base_dir, files, extention):
 
         x, y, w, h = cv2.boundingRect(coords)
 
-        cropped = img[y : y + h, x : x + w]
+        cropped = img[y - margin : y + h + margin, x - margin : x + w + margin]
 
         fname = file.split(".")
         fname.pop(len(fname) - 1)
@@ -57,6 +57,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--dir", type=str, default=None)
+    parser.add_argument("--margin", type=int, default=0)
     parser.add_argument(
         "--width",
         type=int,
@@ -72,6 +73,9 @@ if __name__ == "__main__":
 
     # dpi
     dpi = args.dpi
+
+    # margin
+    margin = args.margin
 
     # extensions
     exts = ["png", "jpeg", "jpg"]
