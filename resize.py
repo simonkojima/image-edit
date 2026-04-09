@@ -60,7 +60,8 @@ if __name__ == "__main__":
         default=180,
         help="180 for double column, 90 for single column.",
     )
-    parser.add_argument("--dpi", type=int, default=500)
+    parser.add_argument("--dpi", type=int, default=600)
+    parser.add_argument("--format", type=str, default="jpg")
 
     args = parser.parse_args()
 
@@ -77,7 +78,7 @@ if __name__ == "__main__":
     # convert : RGB, RGBA, None
     remove_alpha = True
     convert = "RGB"
-    extention = "jpg"
+    extention = args.format
     quality = 95
 
     if args.dir is None:
